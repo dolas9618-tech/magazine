@@ -1,0 +1,1084 @@
+/* 1. НЕГІЗГІ ПАРАМЕТРЛЕР */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #222222;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- ХЕДЕР --- */
+.header {
+    background-color: #2f343e;
+    color: #c10c0c;
+    height: 80px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+
+.header .logo {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white !important;
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-item {
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(255, 255, 255) !important;
+    transition: opacity 0.2s;
+    text-transform: uppercase;
+}
+
+.nav-item:hover {
+    opacity: 0.8;
+}
+
+/* --- КОРЗИНА БАТЫРМАСЫ --- */
+.nav-cart-btn {
+    background-color: #229ee6 !important; 
+    padding: 10px 25px !important; 
+    border-radius: 8px !important; 
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    transition: 0.3s;
+    display: inline-block;
+    cursor: pointer;
+    border: none !important;
+}
+
+.nav-cart-btn:hover {
+    background-color: #00a2ff !important;
+    transform: translateY(-1px);
+}
+
+/* --- КОНТЕНТ ПЕН СЕТКА --- */
+.main-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px; 
+}
+
+.page-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* --- ТАУАР КАРТОЧКАСЫ --- */
+.card {
+    background: #000000;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-box {
+    width: 100%;
+    height: 220px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 16px;
+    color: #718096;
+    margin-bottom: 8px;
+}
+
+.card-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #2D3748;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* --- МОДАЛЬДІ ТЕРЕЗЕ --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #ffffff;
+    width: 850px;
+    max-width: 90%;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: modalShow 0.3s ease-out;
+}
+
+/* Арнайы стиль пікірлері бар модаль үшін */
+.modal-content.detail-modal {
+    display: block; /* Блоктық режим скролл үшін керек */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes modalShow {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-body {
+    display: flex;
+    width: 100%;
+    min-height: 450px;
+}
+
+.modal-img {
+    flex: 1.2;
+    background: #F3F4F6;
+}
+
+.modal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-info {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal-info h2 {
+    font-size: 26px;
+    margin: 0 0 10px 0;
+    color: #2D3748;
+}
+
+.modal-price-display {
+    font-weight: 800;
+    color: #2D3748;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.modal-desc {
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.counter-block {
+    display: flex;
+    align-items: center;
+    background: #F3F4F6;
+    border-radius: 12px;
+    padding: 5px 10px;
+}
+
+.counter-block button {
+    background: none;
+    border: none;
+    font-size: 22px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: #2D3748;
+}
+
+.counter-block span {
+    font-weight: 800;
+    font-size: 18px;
+    min-width: 25px;
+    text-align: center;
+}
+
+.final-add-btn {
+    flex: 1;
+    background: #E35A1B;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #F3F4F6;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal-divider {
+    border: none;
+    border-top: 1px solid #E2E8F0;
+    margin: 20px 0;
+}
+
+/* --- ПІКІРЛЕР БӨЛІМІ --- */
+.comments-section {
+    padding: 0 40px 40px 40px;
+    background: #ffffff;
+}
+
+.comments-section h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 20px;
+}
+
+.comments-list {
+    max-height: 250px; 
+    overflow-y: auto;
+    margin-bottom: 25px;
+    padding-right: 10px;
+}
+
+.comment-item {
+    background: #F8F9FA;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    border: 1px solid #EDF2F7;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.comment-header strong {
+    font-size: 14px;
+    color: #2D3748;
+    font-weight: 700;
+}
+
+.comment-header span {
+    font-size: 12px;
+    color: #A0AEC0;
+}
+
+.comment-item p {
+    font-size: 14px;
+    color: #4A5568;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 80px;
+    background: #F8F9FA;
+    border: 1px solid #E2E8F0;
+    border-radius: 15px;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+    resize: none;
+    box-sizing: border-box;
+}
+
+.comment-form textarea:focus {
+    border-color: #27AE60;
+    background: #ffffff;
+}
+
+.submit-comment-btn {
+    align-self: flex-end;
+    background-color: #27AE60;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-comment-btn:hover {
+    background-color: #1E8449;
+}
+
+.no-comments {
+    text-align: center;
+    color: #A0AEC0;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* --- SCROLLBAR --- */
+.comments-list::-webkit-scrollbar { width: 5px; }
+.comments-list::-webkit-scrollbar-track { background: #f1f1f1; }
+.comments-list::-webkit-scrollbar-thumb { background: #CBD5E0; border-radius: 10px; }
+
+/* --- ФУТЕР --- */
+.footer {
+    background-color: #2D2D2D;
+    color: white;
+    padding: 80px 0;
+    margin-top: 100px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+    gap: 200px;
+}
+
+.footer-brand .logo {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* --- МОБИЛЬДІ НҰСҚА --- */
+@media (max-width: 1100px) {
+    .grid-list { grid-template-columns: repeat(2, 1fr); }
+    .footer-content { gap: 50px; flex-direction: column; }
+    .modal-content.detail-modal { width: 95%; }
+    .modal-body { flex-direction: column; }
+    .modal-img { height: 250px; }
+    .modal-info { padding: 25px; }
+}
+
+
+
+
+
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: rgb(0, 0, 0);
+  width: 900px;
+  max-height: 90vh;
+  border-radius: 24px;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+}
+
+.modal-img img {
+  width: 400px;
+  border-radius: 16px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Санауыш блогы (минус, сан, плюс) */
+.counter-block {
+  display: flex;
+  align-items: center;
+  background: #000000;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+.counter-block button {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Себетке қосу батырмасы */
+.final-add-btn {
+  flex: 1;
+  background: #f46a24; /* Қызғылт сары түс */
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.final-add-btn:hover {
+  background: #d35400;
+}
+
+.modal-body {
+  display: flex;
+  /* Арақашықтықты 30px деп белгілейміз (скриншоттағыдан азырақ) */
+  gap: 30px; 
+  /* Егер элементтер ортада тұрсын десеңіз, мынаны қосыңыз */
+  /* justify-content: center; */
+  width: 100%;
+}
+
+.modal-info {
+  flex: none; /* Flex-grow-ды өшіреміз */
+  
+  /* Мәтін блогының максималды ені. 
+     Бұл мән суреттің өлшеміне сәйкес болуы керек. 
+     Мысалы, суретпен шамалас (300-400px) етіп байқап көріңіз. */
+  width: 350px; 
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Элементтерді жоғары-төмен орналастыру */
+}
+
+.modal-body {
+  display: flex;
+  /* Арақашықтықты 30px деп белгілейміз (скриншоттағыдан азырақ) */
+  gap: 30px; 
+  /* Егер элементтер ортада тұрсын десеңіз, мынаны қосыңыз */
+  /* justify-content: center; */
+  width: 100%;
+}
+
+
+
+
+/* --- МОДАЛЬДІ ТЕРЕЗЕ (ЖАҢАРТЫЛҒАН ДИЗАЙН) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content.detail-modal {
+    background: #000000;
+    width: 850px; /* Жалпы ені */
+    max-width: 95%;
+    max-height: 90vh;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    display: block;
+    animation: modalShow 0.3s ease-out;
+}
+
+.modal-body {
+    display: flex;
+    padding: 40px;
+    gap: 40px; /* Сурет пен мәтін арасындағы қашықтық */
+    align-items: flex-start;
+}
+
+.modal-img {
+    flex: 0 0 400px; /* Суреттің енін нақты 400px қылып бекітеміз */
+}
+
+.modal-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-info {
+    flex: 1; /* Қалған бос орынды мәтін алады */
+    display: flex;
+    flex-direction: column;
+    min-height: 400px; /* Суретпен теңестіру үшін */
+}
+
+.modal-info h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    color: #1a202c;
+}
+
+.modal-price-display {
+    font-weight: 700;
+    color: #2D3748;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.modal-desc {
+    color: #718096;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: auto; /* Мәтінді жоғары итеріп, футерді төменде ұстайды */
+    padding-bottom: 20px;
+}
+
+/* Футер бөлімі (Санауыш пен Батырма) */
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.counter-block {
+    display: flex;
+    align-items: center;
+    background: #F3F4F6;
+    border-radius: 15px;
+    padding: 6px;
+}
+
+.counter-block button {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #2D3748;
+    transition: 0.2s;
+}
+
+.counter-block button:hover {
+    color: #E35A1B;
+}
+
+.counter-block span {
+    font-weight: 700;
+    font-size: 18px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.final-add-btn {
+    flex: 1;
+    background: #f46a24; /* Скриншоттағы қызғылт сары түс */
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 18px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.final-add-btn:hover {
+    background: #e35a1b;
+    transform: translateY(-2px);
+}
+
+/* Жабу батырмасы */
+.close-x {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: #F3F4F6;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.close-x:hover {
+    background: #e2e8f0;
+}
+
+/* Мобильді нұсқаға бейімдеу */
+@media (max-width: 800px) {
+    .modal-body {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .modal-img {
+        flex: none;
+        width: 100%;
+    }
+    
+    .modal-info {
+        min-height: auto;
+    }
+}
+
+
+/* ==========================================================
+   МОДАЛЬДІ ТЕРЕЗЕ (ЖАҢАРТЫЛҒАН ДИЗАЙН, МАКЕТТЕГІДЕЙ)
+   ========================================================== */
+
+/* Модаль терезесінің сыртқы қараңғылауы */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Артқы жақты қараңғылау */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px); /* Артқы жақты анық емес қылу */
+}
+
+/* Модаль терезесінің негізгі контейнері */
+.modal-content.detail-modal {
+    background: #ffffff;
+    width: 800px; /* Макетке сәйкес жинақы ен */
+    max-width: 95%;
+    max-height: 90vh; /* Биіктігі экраннан аспайды */
+    border-radius: 30px; /* Доғал бұрыштар */
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); /* Көлеңке */
+    overflow-y: auto; /* Ішкі мазмұн сыймаса, айналдыру */
+    animation: modalShow 0.3s ease-out;
+}
+
+@keyframes modalShow {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ішкі негізгі бөлім */
+.modal-body {
+    display: flex;
+    padding: 30px;
+    gap: 30px; /* Сурет пен мәтін арасындағы қашықтық */
+    align-items: stretch; /* Екі жақтың биіктігі тең */
+}
+
+/* Сурет блогы */
+.modal-img {
+    flex: 0 0 380px; /* Сурет енін нақтылау */
+}
+
+.modal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Мәтін мен батырмалар блогы */
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0; /* Мәтін суретке жақын тұруы үшін padding-ді азайттық */
+}
+
+/* Тақырып */
+.modal-info h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    color: #1a202c;
+    line-height: 1.2;
+}
+
+/* Баға мен Салмақ */
+.modal-price-display {
+    font-weight: 700;
+    color: #2D3748;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Сипаттама мәтіні */
+.modal-desc {
+    color: #718096;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: auto; /* Бұл футерді (батырманы) төменге итереді */
+}
+
+/* Футер (Санауыш пен Батырма) */
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 30px; /* Үстіңгі мәтіннен қашықтық */
+}
+
+/* Санауыш блогы (минус, сан, плюс) */
+.counter-block {
+    display: flex;
+    align-items: center;
+    background: #F3F4F6;
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.counter-block button {
+    background: none;
+    border: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+.counter-block span {
+    font-weight: 800;
+    font-size: 18px;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Себетке қосу батырмасы */
+.final-add-btn {
+    flex: 1;
+    background: #F46A24; /* Скриншоттағы нақты қызғылт сары түс */
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.final-add-btn:hover {
+    background: #E35A1B;
+}
+
+/* Жабу батырмасы (X) */
+.close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #F3F4F6;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* --- ПІКІРЛЕР БӨЛІМІ (ЕГЕР БОЛСА) --- */
+.comments-section {
+    padding: 20px 30px 40px 30px;
+    border-top: 1px solid #edf2f7;
+    margin-top: 10px;
+}
+
+/* МОБИЛЬДІ НҰСҚАҒА БЕЙІМДЕУ */
+@media (max-width: 850px) {
+    .modal-content.detail-modal { width: 95%; }
+    .modal-body { flex-direction: column; padding: 20px; gap: 20px; }
+    .modal-img { flex: none; width: 100%; height: 250px; }
+    .modal-info { padding: 0; }
+}
+
+
+
+/* ==========================================================
+   МОДАЛЬДІ ТЕРЕЗЕ (МАКЕТКЕ СӘЙКЕС ТОЛЫҚТАЙ ЖӨНДЕЛГЕН)
+   ========================================================== */
+
+/* Сыртқы қараңғылау қабаты */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+/* Негізгі контейнер */
+.modal-content.detail-modal {
+    background: #ffffff;
+    width: 800px; 
+    max-width: 95%;
+    max-height: 90vh;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    animation: modalShow 0.3s ease-out;
+}
+
+@keyframes modalShow {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ішкі құрылым */
+.modal-body {
+    display: flex;
+    padding: 30px;
+    gap: 30px; 
+    align-items: stretch;
+}
+
+/* Сурет блогы */
+.modal-img {
+    flex: 0 0 380px; /* Сурет енін бекіту */
+}
+
+.modal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Мәтін мен батырмалар блогы */
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.modal-info h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    color: #1a202c;
+    line-height: 1.2;
+}
+
+.modal-price-display {
+    font-weight: 700;
+    color: #2D3748;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.modal-desc {
+    color: #718096;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: auto; /* Батырмаларды төменге итереді */
+}
+
+/* --- ФУТЕР: САНАУЫШ ПЕН БАТЫРМА --- */
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 30px;
+    /* Батырмалар оң жаққа созылып кетпеуі үшін солға жинаймыз */
+    justify-content: flex-start; 
+}
+
+/* Санауыш блогы */
+.counter-block {
+    flex: none; /* Ені созылмауы керек */
+    display: flex;
+    align-items: center;
+    background: #F3F4F6;
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.counter-block button {
+    background: none;
+    border: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+.counter-block span {
+    font-weight: 800;
+    font-size: 18px;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Себетке қосу батырмасы (Ұзындығы дұрысталған) */
+.final-add-btn {
+    flex: none; /* 1-ден none-ға өзгерттік, созылуды тоқтатады */
+    width: 240px; /* Батырманың нақты жинақы ені */
+    background: #F46A24;
+    color: white;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap; /* Мәтін бір жолға сыюы үшін */
+}
+
+.final-add-btn:hover {
+    background: #E35A1B;
+    transform: translateY(-1px);
+}
+
+/* Жабу батырмасы (X) */
+.close-x {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #F3F4F6;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* ПІКІРЛЕР БӨЛІМІ */
+.comments-section {
+    padding: 20px 30px 40px 30px;
+    border-top: 1px solid #edf2f7;
+    margin-top: 10px;
+}
+
+/* МОБИЛЬДІ НҰСҚА */
+@media (max-width: 850px) {
+    .modal-content.detail-modal { width: 95%; }
+    .modal-body { flex-direction: column; padding: 20px; gap: 20px; }
+    .modal-img { flex: none; width: 100%; height: 250px; }
+    .modal-info { padding: 0; }
+    .final-add-btn { width: 100%; } /* Мобильді түрде толық енді алуы мүмкін */
+}
