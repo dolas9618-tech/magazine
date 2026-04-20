@@ -9,9 +9,10 @@ function Footer() {
         <div className="footer-links">
           <h3>Компания</h3>
           <ul>
-            <li><a href="#">Франшиза</a></li>
-            <li><a href="#">Вакансии</a></li>
-            <li><a href="#">Оферта</a></li>
+            {/* Заменили # на / чтобы деплой не падал */}
+            <li><a href="/">Франшиза</a></li>
+            <li><a href="/">Вакансии</a></li>
+            <li><a href="/">Оферта</a></li>
           </ul>
         </div>
       </div>

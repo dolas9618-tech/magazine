@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import CartPage from './components/CartPage';
 import PostDetailPage from './components/PostDetailPage'; 
 import Footer from './components/Footer';
-
-// ИСПРАВЛЕННЫЕ ПУТИ:
 import AuthForm from './components/AuthForm'; 
 import { AuthProvider, useAuth } from './components/AuthContext'; 
 
@@ -23,7 +21,6 @@ const Header = ({ cartCount }) => {
         <Link to={`/categories/burgers?${figmaStyle}`} className="nav-item">БУРГЕРЫ</Link>
         <Link to={`/categories/new?${figmaStyle}`} className="nav-item">НОВИНКИ</Link>
         
-        {/* Динамическая кнопка: если вошел — имя, если нет — войти */}
         {user ? (
           <div className="user-menu">
             <span className="nav-item">{user.email}</span>
@@ -43,16 +40,6 @@ const Header = ({ cartCount }) => {
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [allProducts, setAllProducts] = useState([]);
-
-  useEffect(() => {
-    fetch('https://8aefe87c60033c7c.mokky.dev/BAHANDI')
-      .then(res => res.json())
-      .then(data => {
-        setAllProducts(Array.isArray(data) ? data : []);
-      })
-      .catch(err => console.error("Деректерді жүктеу қатесі:", err));
-  }, []);
 
   const addToCart = (product) => {
     setCart((prev) => {
@@ -69,7 +56,7 @@ function App() {
   const cartCount = cart.reduce((a, b) => a + b.quantity, 0);
 
   return (
-    <AuthProvider> {/* Оборачиваем всё приложение в контекст авторизации */}
+    <AuthProvider>
       <BrowserRouter>
         <div className="App">
           <Header cartCount={cartCount} />
